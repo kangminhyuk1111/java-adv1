@@ -16,7 +16,7 @@ public class ThreadInfoMain {
         log("mainThread.getThreadGroup = " + mainThread.getThreadGroup());
         log("mainThread.getState = " + mainThread.getState());
 
-        // main 스레드
+        // my 스레드
         final Thread myThread = new Thread(new HelloThread(), "myThread");
         log("myThread = " + myThread);
         log("myThread.threadId = " + myThread.threadId());
