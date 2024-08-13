@@ -3,16 +3,12 @@ package thread.control.join;
 import static thread.control.ThreadUtils.sleep;
 import static util.MyLogger.log;
 
-public class JoinMainV1 {
+public class JoinMainV2 {
 
     public static void main(String[] args) {
         log("start");
 
-        // this는 호출된 인스턴스 메서드가 소속된 객체를 가리키는 참조이며, 이것이 스택 프레임 내부에 저장되어 있다.
-
         final SumTask task1 = new SumTask(1, 50);
-
-        // task2는 this로 task2의 참조값 주소를 가지고 있다. this.task2 하면 참조값 찾아감.
         final SumTask task2 = new SumTask(51, 100);
 
         final Thread thread1 = new Thread(task1, "thread-1");
@@ -20,6 +16,15 @@ public class JoinMainV1 {
 
         thread1.start();
         thread2.start();
+
+        // 정확한 타이밍을 맞추어 기다리기 어려움
+        log("main 스레드 sleep()");
+
+        // sleep 메서드를 사용해서 task1, task2의 필드변수에 작업이 완료되어 값이 할당되기를 기다림.
+        sleep(3000);
+
+        // 깨어났을때는 값이 할당 되어 있음.
+        log("main 스레드 깨어남");
 
         log(task1.result);
         log(task2.result);
