@@ -9,7 +9,7 @@ import static util.MyLogger.log;
 public class BoundedMain {
 
     public static void main(String[] args) {
-        final BoundedQueue queue = new BoundedQueueV3(2);
+        final BoundedQueue queue = new BoundedQueueV5(2);
 
         producerFirst(queue);
         //consumerFirst(queue);
